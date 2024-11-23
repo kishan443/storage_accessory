@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+   <style>/* Basic Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Body styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        padding: 20px;
+    }
+    
+    /* Header */
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    /* Billing Container */
+    .billing-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Product Summary */
+    .product-summary {
+        margin-bottom: 30px;
+    }
+    
+    .product-summary h2 {
+        font-size: 1.6em;
+        margin-bottom: 10px;
+    }
+    
+    .product-summary p {
+        font-size: 1.2em;
+        margin: 5px 0;
+    }
+    
+    /* Payment Methods */
+    .payment-methods {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .payment-methods button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease;
+    }
+    
+    .payment-methods button:hover {
+        background-color: #45a049;
+    }
+    
+    /* Checkout Button */
+    .checkout {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .checkout-button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease;
+        width: 200px;
+    }
+    
+    .checkout-button:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Back Button */
+    .back-button {
+        background-color: #ddd;
+        color: #333;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1em;
+        display: block;
+        margin: 20px auto;
+        width: 200px;
+    }
+    
+    .back-button:hover {
+        background-color: #bbb;
+    }
+    
+    /* Media Query for responsiveness */
+    @media (max-width: 768px) {
+        .payment-methods {
+            flex-direction: column;
+        }
+    
+        .checkout-button, .back-button {
+            width: auto;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Billing Information</h1>
+    </header>
+
+    <div class="billing-container">
+        <!-- Product Summary -->
+        <div class="product-summary">
+            <h2>Product Summary</h2>
+            <p id="productName">Loading product...</p>
+            <p id="productPrice">Loading price...</p>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods">
+            <button onclick="selectPayment('Cash on Delivery')">Cash on Delivery</button>
+            <button onclick="selectPayment('Online UPI')">Online UPI</button>
+        </div>
+
+        <!-- Checkout Button -->
+        <div class="checkout">
+            <button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
+        </div>
+
+        <!-- Back Button -->
+        <a href="index.html">
+            <button class="back-button">Back to Home</button>
+        </a>
+    </div>
+
+    <script>
+        // Retrieve product details from the URL query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('product');
+        const productPrice = urlParams.get('price');
+
+        // Display the product name and price on the page
+        document.getElementById('productName').innerText = productName ? productName : 'Product not found';
+        document.getElementById('productPrice').innerText = productPrice ? `Price: Rs. ${productPrice} INR` : 'Price not available';
+
+        // Function to handle payment selection
+        function selectPayment(paymentMethod) {
+            alert(`Selected payment method: ${paymentMethod}`);
+        }
+
+        // Function to simulate proceeding to checkout
+        function proceedToCheckout() {
+            alert('Proceeding to checkout...');
+        }
+    </script>
+
+    
+</body>
+</html>
